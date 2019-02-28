@@ -4,6 +4,11 @@ import { IYellowProfileProps } from './IYellowProfileProps';
 import Friends from './Friends/Friends';
 import Images from './Images/Images';
 import Presentation from './Presentation/Presentation';
+import { DocumentCard,
+  DocumentCardType,
+  DocumentCardActivity,
+  DocumentCardTitle
+} from 'office-ui-fabric-react/lib/DocumentCard';
 import { sp } from '@pnp/sp';
 
 export default class YellowProfile extends React.Component<IYellowProfileProps, { properties?: any, isLoading: boolean }> {
@@ -41,7 +46,14 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
     let quotes: string[] = quoteString.split(';');
 
     return quotes.map(q => {
-      return <div><span>{q}</span></div>;
+      return (
+        <DocumentCard type={DocumentCardType.compact}>
+        <DocumentCardActivity
+        activity='Created sometime ago...'
+        people={[{ name: this.state.properties.name, profileImageSrc: this.state.properties.profilePic }]} />
+        <DocumentCardTitle title={q} />
+        </DocumentCard>
+      );
     });
   }
 
