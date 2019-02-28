@@ -8,7 +8,6 @@ export default class Images extends React.Component<IImagesProps, {}> {
   }
 
   public render() {
-    let images = this.props.properties.images.split(0,9);
     console.log(this.props.properties.images)
     return (
       <div className={styles.leftComponent}>
