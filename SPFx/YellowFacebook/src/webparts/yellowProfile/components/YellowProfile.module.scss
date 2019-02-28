@@ -20,6 +20,12 @@
             .bodyIcon {
                 margin-right: 5px;
             }
+            .imagePreview{
+                margin: 1px;
+                height: 89px;
+                width: 89px;
+                object-fit: cover;
+            }
         }
     }
     .feed {
