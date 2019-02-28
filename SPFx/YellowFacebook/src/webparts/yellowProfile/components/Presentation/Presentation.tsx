@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styles from '../YellowProfile.module.scss';
 import IPresentationProps from './IPresentationProps';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 export default class Presentation extends React.Component<IPresentationProps, {}> {
   constructor(props) {
@@ -10,7 +11,9 @@ export default class Presentation extends React.Component<IPresentationProps, {}
   public render() {
     return (
       <div className={styles.leftComponent}>
-        <span>Presentation</span>
+        <span><Icon iconName="Suitcase" className={styles.bodyIcon}/> Occupation: {this.props.properties.occupation}</span>
+        <span>Gender: {this.props.properties.gender}</span>
+        <span>Lives in: Springfield</span>
       </div>
     );
   }
