@@ -31,14 +31,18 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
           <Friends />
         </div>
         <div className={styles.feed}>
-          {this.renderItems()}
+          {this.renderItems(this.state.properties.quotes)}
         </div>
       </div>
     );
   }
 
-  private renderItems() {
-    return <div></div>;
+  private renderItems(quoteString: string) {
+    let quotes: string[] = quoteString.split(';');
+
+    return quotes.map(q => {
+      return <div><span>{q}</span></div>;
+    });
   }
 
   private async fetchData() {
