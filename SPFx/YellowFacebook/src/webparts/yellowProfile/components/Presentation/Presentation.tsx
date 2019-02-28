@@ -11,9 +11,9 @@ export default class Presentation extends React.Component<IPresentationProps, {}
   public render() {
     return (
       <div className={styles.leftComponent}>
-        <span><Icon iconName="Suitcase" className={styles.bodyIcon}/> Occupation: {this.props.properties.occupation}</span>
-        <span>Gender: {this.props.properties.gender}</span>
-        <span>Lives in: Springfield</span>
+        <span className={styles.personProperty}><Icon iconName="Suitcase" className={styles.bodyIcon}/> Occupation: {this.props.properties.occupation}</span>
+        <span className={styles.personProperty}><Icon iconName="Contact" className={styles.bodyIcon}/>Gender: {this.props.properties.gender}</span>
+        <span className={styles.personProperty}><Icon iconName="MapPin" className={styles.bodyIcon}/>Lives in: Springfield</span>
       </div>
     );
   }
