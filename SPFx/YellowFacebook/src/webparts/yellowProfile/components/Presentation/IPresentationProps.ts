@@ -1,4 +1,3 @@
-export interface IPresentationProps {
-    description: string;
-  }
-  
+export default interface IPresentationProps {
+
+}
