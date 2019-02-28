@@ -9,10 +9,19 @@
           "manifest": "./src/webparts/yellowFacebook/YellowFacebookWebPart.manifest.json"
         }
       ]
+    },
+    "yellow-profile-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/yellowProfile/YellowProfileWebPart.js",
+          "manifest": "./src/webparts/yellowProfile/YellowProfileWebPart.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
-    "YellowFacebookWebPartStrings": "lib/webparts/yellowFacebook/loc/{locale}.js"
+    "YellowFacebookWebPartStrings": "lib/webparts/yellowFacebook/loc/{locale}.js",
+    "YellowProfileWebPartStrings": "lib/webparts/yellowProfile/loc/{locale}.js"
   }
 }
