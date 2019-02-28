@@ -6,9 +6,13 @@ import Images from './Images/Images';
 import Presentation from './Presentation/Presentation';
 import { sp } from '@pnp/sp';
 
-export default class YellowProfile extends React.Component<IYellowProfileProps, { properties: any }> {
+export default class YellowProfile extends React.Component<IYellowProfileProps, { properties?: any, isLoading: boolean }> {
   constructor(props) {
     super(props);
+
+    this.state = {
+      isLoading: true
+    };
   }
 
   public async componentDidMount() {
@@ -17,7 +21,9 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
   }
 
   public render(): React.ReactElement<IYellowProfileProps> {
-    return (
+    if (this.state.isLoading) {
+      return null;
+    } else return (
       <div className={styles.yellowProfile}>
         <div className={styles.leftComponentsContainer}>
           <Presentation properties={this.state.properties}/>
@@ -45,7 +51,7 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
       quotes: data[0].Quotes,
       profilePic: data[0].ProfilePicture
     };
-    this.setState({ properties });
+    this.setState({ properties, isLoading: false });
   }
 
 }

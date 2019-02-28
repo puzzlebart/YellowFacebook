@@ -17,7 +17,7 @@ export default class Presentation extends React.Component<IPresentationProps, {}
 
 
   public async componentDidMount(){
-    this.fetchData()
+    this.fetchData();
   }
 
   public fetchData(){
