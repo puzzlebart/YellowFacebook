@@ -10,7 +10,7 @@ export default class Images extends React.Component<IImagesProps, {}> {
   public render() {
     return (
       <div className={styles.leftComponent}>
-        <span>Images</span>
+        <h3>Images</h3>
       </div>
     );
   }
