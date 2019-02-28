@@ -6,13 +6,14 @@ import Images from './Images/Images';
 import Presentation from './Presentation/Presentation';
 import { sp } from '@pnp/sp';
 
-export default class YellowProfile extends React.Component<IYellowProfileProps, {}> {
+export default class YellowProfile extends React.Component<IYellowProfileProps, { properties: any }> {
   constructor(props) {
     super(props);
   }
 
   public async componentDidMount() {
     await this.fetchData();
+    console.log(this.state.properties);
   }
 
   public render(): React.ReactElement<IYellowProfileProps> {
@@ -24,7 +25,7 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
           <Friends />
         </div>
         <div className={styles.feed}>
-        {this.renderItems()}
+          {this.renderItems()}
         </div>
       </div>
     );
@@ -35,8 +36,16 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
   }
 
   private async fetchData() {
-    let people = await sp.web.lists.getByTitle('YellowPeople').items;
-    console.log(people);
+    let data = await sp.web.lists.getByTitle('Properties').items.getAll();
+
+    let properties = {
+      name: data[0].Title,
+      gender: data[0].Gender,
+      occupation: data[0].Occupation,
+      quotes: data[0].Quotes,
+      profilePic: data[0].ProfilePicture
+    };
+    this.setState({ properties });
   }
 
 }
