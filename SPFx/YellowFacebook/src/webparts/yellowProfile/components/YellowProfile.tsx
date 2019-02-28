@@ -68,11 +68,7 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
       quotes: data[0].Quotes,
       profilePic: data[0].ProfilePicture,
       friends: JSON.parse(data[0].Friends),
-<<<<<<< HEAD
-      images: data[0].Images
-=======
       images: data[0].Images.split(",")
->>>>>>> b8616d18766240c67e224bac5d8c254f31407af3
     };
     this.setState({ properties, isLoading: false });
   }
