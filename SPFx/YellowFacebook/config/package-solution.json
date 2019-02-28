@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "yellow-facebook-client-side-solution",
+    "id": "13d9722b-c39d-4f66-8b11-358eedadc041",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/yellow-facebook.sppkg"
+  }
+}
