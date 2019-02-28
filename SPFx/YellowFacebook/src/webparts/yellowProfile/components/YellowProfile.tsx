@@ -4,7 +4,8 @@ import { IYellowProfileProps } from './IYellowProfileProps';
 import Friends from './Friends/Friends';
 import Images from './Images/Images';
 import Presentation from './Presentation/Presentation';
-import { DocumentCard,
+import {
+  DocumentCard,
   DocumentCardType,
   DocumentCardActivity,
   DocumentCardTitle
@@ -30,6 +31,7 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
       return null;
     } else return (
       <div className={styles.yellowProfile}>
+
         <div className={styles.leftComponentsContainer}>
           <Presentation properties={this.state.properties} />
           <Images />
@@ -48,10 +50,10 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
     return quotes.map(q => {
       return (
         <DocumentCard type={DocumentCardType.compact} className={styles.statusUpdateHeader}>
-        <DocumentCardActivity
-        activity='Created sometime ago...'
-        people={[{ name: this.state.properties.name, profileImageSrc: this.state.properties.profilePic }]} />
-        <DocumentCardTitle title={q} />
+          <DocumentCardActivity
+            activity='Created sometime ago...'
+            people={[{ name: this.state.properties.name, profileImageSrc: this.state.properties.profilePic }]} />
+          <DocumentCardTitle title={q} />
         </DocumentCard>
       );
     });
