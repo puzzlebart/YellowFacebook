@@ -8,10 +8,19 @@ export default class Friends extends React.Component<IFriendsProps, {}> {
   }
 
   public render() {
+    console.log(this.props.friends);
     return (
       <div className={styles.leftComponent}>
-        <span>Friends</span>
+      <span>Friends</span>
+      {this.renderFriends()}
       </div>
     );
   }
+
+  private renderFriends() {
+    return this.props.friends.map(friend => {
+      return <span>{friend}</span>;
+    });
+  }
+
 }

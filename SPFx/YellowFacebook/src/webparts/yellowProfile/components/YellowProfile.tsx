@@ -26,9 +26,9 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
     } else return (
       <div className={styles.yellowProfile}>
         <div className={styles.leftComponentsContainer}>
-          <Presentation properties={this.state.properties}/>
+          <Presentation properties={this.state.properties} />
           <Images />
-          <Friends />
+          <Friends friends={this.state.properties.friends} />
         </div>
         <div className={styles.feed}>
           {this.renderItems(this.state.properties.quotes)}
@@ -47,13 +47,13 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
 
   private async fetchData() {
     let data = await sp.web.lists.getByTitle('Properties').items.getAll();
-
     let properties = {
       name: data[0].Title,
       gender: data[0].Gender,
       occupation: data[0].Occupation,
       quotes: data[0].Quotes,
-      profilePic: data[0].ProfilePicture
+      profilePic: data[0].ProfilePicture,
+      friends: JSON.parse(data[0].Friends)
     };
     this.setState({ properties, isLoading: false });
   }
