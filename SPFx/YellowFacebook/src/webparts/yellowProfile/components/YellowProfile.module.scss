@@ -10,8 +10,8 @@
             margin: 5px 0;
             border: 1px solid #dddfe2;
             padding: 12px;
-            > h3 {
-              @include ms-font-l;
+            >h3 {
+                @include ms-font-l;
             }
             .personProperty {
                 display: block;
@@ -19,6 +19,15 @@
             }
             .bodyIcon {
                 margin-right: 5px;
+            }
+            .friend {
+                width: 89px;
+                height: 89px;
+                margin: 1px;
+                > a  {
+                  text-decoration: none;
+                  text-align: bottom;
+                }
             }
         }
     }
