@@ -8,12 +8,18 @@ export default class Images extends React.Component<IImagesProps, {}> {
   }
 
   public render() {
-    let images = this.props.properties.images.map((item => {return <img className={styles.imagePreview} src={item}></img>}));
     return (
       <div className={styles.leftComponent}>
         <h3>Images</h3>
-        <div>{images}</div>
+        {this.renderImages()}
       </div>
     );
   }
+
+  private renderImages() {
+   return this.props.properties.images.map(image => {
+    return <img className={styles.imagePreview} src={image}></img>;
+   });
+  }
+
 }
