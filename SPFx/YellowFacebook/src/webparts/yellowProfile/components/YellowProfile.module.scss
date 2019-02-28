@@ -7,7 +7,7 @@
         height: auto;
         .leftComponent {
             background-color: #ffffff;
-            margin: 10px 0;
+            margin: 5px 0;
             border: 1px solid #dddfe2;
             padding: 12px;
             .personProperty{
@@ -20,7 +20,11 @@
         }
     }
     .feed {
+        display: block;
         width: 600px;
         padding: 5px;
+        .feedBody{
+            display: block;
+        }
     }
 }

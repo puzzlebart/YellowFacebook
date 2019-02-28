@@ -47,7 +47,7 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
 
     return quotes.map(q => {
       return (
-        <DocumentCard type={DocumentCardType.compact}>
+        <DocumentCard type={DocumentCardType.compact} className={styles.feedBody}>
         <DocumentCardActivity
         activity='Created sometime ago...'
         people={[{ name: this.state.properties.name, profileImageSrc: this.state.properties.profilePic }]} />
