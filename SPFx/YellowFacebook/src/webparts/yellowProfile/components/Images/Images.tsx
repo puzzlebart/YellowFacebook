@@ -8,12 +8,7 @@ export default class Images extends React.Component<IImagesProps, {}> {
   }
 
   public render() {
-<<<<<<< HEAD
-    // let images = this.props.properties.images.split(0,9);
     console.log(this.props.properties.images);
-=======
-    console.log(this.props.properties.images)
->>>>>>> b8616d18766240c67e224bac5d8c254f31407af3
     return (
       <div className={styles.leftComponent}>
         <h3>Images</h3>
