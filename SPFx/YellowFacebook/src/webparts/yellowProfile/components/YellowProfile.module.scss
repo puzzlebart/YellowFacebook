@@ -10,8 +10,8 @@
             margin: 5px 0;
             border: 1px solid #dddfe2;
             padding: 12px;
-            > h3 {
-              @include ms-font-l;
+            >h3 {
+                @include ms-font-l;
             }
             .personProperty {
                 display: block;
@@ -20,11 +20,22 @@
             .bodyIcon {
                 margin-right: 5px;
             }
+<<<<<<< HEAD
             .imagePreview{
                 margin: 1px;
                 height: 89px;
                 width: 89px;
                 object-fit: cover;
+=======
+            .friend {
+                width: 89px;
+                height: 89px;
+                margin: 1px;
+                > a  {
+                  text-decoration: none;
+                  text-align: bottom;
+                }
+>>>>>>> 48adfa7a139b806db41aa12ce34079d892132112
             }
         }
     }
