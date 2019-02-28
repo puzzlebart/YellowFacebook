@@ -17,6 +17,7 @@
     "@microsoft/sp-webpart-base": "1.7.1",
     "@pnp/common": "^1.2.9",
     "@pnp/logging": "^1.2.9",
+    "@pnp/odata": "^1.2.9",
     "@pnp/sp": "^1.2.9",
     "@types/es6-promise": "0.0.33",
     "@types/react": "16.4.2",

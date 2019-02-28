@@ -35,7 +35,8 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
   }
 
   private async fetchData() {
-
+    let people = await sp.web.lists.getByTitle('YellowPeople').items;
+    console.log(people);
   }
 
 }

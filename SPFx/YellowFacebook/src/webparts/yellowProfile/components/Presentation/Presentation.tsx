@@ -17,11 +17,11 @@ export default class Presentation extends React.Component<IPresentationProps, {}
 
 
   public async componentDidMount(){
-    this.fetchData()
+    this.fetchData();
   }
 
   public fetchData(){
-    console.log(`${_spPageContextInfo.webAbsoluteUrl}/`)
+    // console.log(`${_spPageContextInfo.webAbsoluteUrl}/`);
     // let items = await fetch(`${_spPageContextInfo.webAbsoluteUrl}/`)
   }
 }
