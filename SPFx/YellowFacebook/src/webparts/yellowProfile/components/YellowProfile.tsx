@@ -4,6 +4,7 @@ import { IYellowProfileProps } from './IYellowProfileProps';
 import Friends from './Friends/Friends';
 import Images from './Images/Images';
 import Presentation from './Presentation/Presentation';
+import { sp } from '@pnp/sp';
 
 export default class YellowProfile extends React.Component<IYellowProfileProps, {}> {
   constructor(props) {
