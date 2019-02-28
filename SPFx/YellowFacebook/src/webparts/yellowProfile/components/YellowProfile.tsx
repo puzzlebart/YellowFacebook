@@ -20,7 +20,7 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
     return (
       <div className={styles.yellowProfile}>
         <div className={styles.leftComponentsContainer}>
-          <Presentation />
+          <Presentation properties={this.state.properties}/>
           <Images />
           <Friends />
         </div>
