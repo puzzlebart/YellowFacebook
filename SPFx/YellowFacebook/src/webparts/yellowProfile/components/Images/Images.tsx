@@ -8,6 +8,7 @@ export default class Images extends React.Component<IImagesProps, {}> {
   }
 
   public render() {
+    console.log(this.props.properties)
     return (
       <div className={styles.leftComponent}>
         <h3>Images</h3>

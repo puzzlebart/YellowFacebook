@@ -34,7 +34,7 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
 
         <div className={styles.leftComponentsContainer}>
           <Presentation properties={this.state.properties} />
-          <Images />
+          <Images properties ={this.state.properties}/>
           <Friends friends={this.state.properties.friends} />
         </div>
         <div className={styles.feed}>
