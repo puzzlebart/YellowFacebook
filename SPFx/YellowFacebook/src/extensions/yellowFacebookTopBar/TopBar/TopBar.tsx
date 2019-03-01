@@ -16,6 +16,7 @@ export default class TopBar extends React.Component<ITopBarProps, {}> {
 
     return (
       <div className={styles.topBar}>
+      <img className={styles.logo} src="/sites/YellowFacebook/SiteAssets/img/YF.PNG" alt="YF"/>
         <SearchBox className={styles.searchBox} placeholder={strings.SearchBoxPlaceholderText} />
 
         <div
