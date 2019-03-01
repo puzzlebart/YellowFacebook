@@ -2,6 +2,7 @@
 .yellowProfile {
     background-color: #f1f1f1;
     display: flex;
+    justify-content: center;
     .leftComponentsContainer {
         width: 300px;
         height: auto;
@@ -42,7 +43,6 @@
                         top: -20px;
                         color: #fff;
                         font-weight: 100;
-                        //text-shadow: 1px 0 0 #141414, 0 1px 0 #141414, 0 1px 0 #141414, 1px 0 0 #141414
                     }
                 }
             }

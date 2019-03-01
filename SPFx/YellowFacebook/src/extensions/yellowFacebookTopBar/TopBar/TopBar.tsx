@@ -6,7 +6,6 @@ import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { Persona, PersonaSize, IPersonaSharedProps, IPersonaStyles, IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 
 export default class TopBar extends React.Component<ITopBarProps, {}> {
-
   public render() {
 
     const persona: IPersonaSharedProps = {
@@ -15,7 +14,7 @@ export default class TopBar extends React.Component<ITopBarProps, {}> {
     };
 
     return (
-      <div className={styles.topBar}>
+      <div id='top' className={styles.topBar}>
       <img className={styles.logo} src="/sites/YellowFacebook/SiteAssets/img/YF.PNG" alt="YF"/>
         <SearchBox className={styles.searchBox} placeholder={strings.SearchBoxPlaceholderText} />
 
@@ -30,4 +29,5 @@ export default class TopBar extends React.Component<ITopBarProps, {}> {
       </div>
     );
   }
+
 }
