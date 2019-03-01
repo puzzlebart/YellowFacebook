@@ -24,7 +24,7 @@ export default class Friends extends React.Component<IFriendsProps, {}> {
     return this.props.friends.map(friend => {
       return  <a href="#"><div className={styles.friend}>
         <img className={styles.imagePreview} src={"https://vignette.wikia.nocookie.net/simpsons/images/5/57/Lisa_Simpson2.png/revision/latest?cb=20180319000458"}></img>
-        <a>Lisa Simpson</a>
+        <a >Lisa Simpson</a>
         </div></a>;
     });
   }
