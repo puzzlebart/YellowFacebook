@@ -11,8 +11,6 @@ import {
 } from '@microsoft/sp-application-base';
 import { setup } from '@pnp/common';
 
-import * as strings from 'YellowFacebookTopBarApplicationCustomizerStrings';
-
 const LOG_SOURCE: string = 'YellowFacebookTopBarApplicationCustomizer';
 
 /**
@@ -28,7 +26,7 @@ export interface IYellowFacebookTopBarApplicationCustomizerProperties {
 /** A Custom Action which can be run during execution of a Client Side Application */
 export default class YellowFacebookTopBarApplicationCustomizer
   extends BaseApplicationCustomizer<IYellowFacebookTopBarApplicationCustomizerProperties> {
-    private _topPlaceholder: PlaceholderContent | undefined;
+  private _topPlaceholder: PlaceholderContent | undefined;
 
   @override
   public onInit(): Promise<void> {
@@ -43,22 +41,26 @@ export default class YellowFacebookTopBarApplicationCustomizer
 
   private setupTopBar() {
     if (!this._topPlaceholder) {
-        this._topPlaceholder = this.context.placeholderProvider.tryCreateContent(PlaceholderName.Top, { onDispose: this._onDispose });
-        if (!this._topPlaceholder) {
-          Log.info(LOG_SOURCE, `Expected placeholder 'Top' was not found.`);
-          return;
+      this._topPlaceholder = this.context.placeholderProvider.tryCreateContent(PlaceholderName.Top, { onDispose: this._onDispose });
+      if (!this._topPlaceholder) {
+        Log.info(LOG_SOURCE, `Expected placeholder 'Top' was not found.`);
+        return;
+      }
+      if (this._topPlaceholder.domElement) {
+        let yellowFacebookPlaceholderId = 'top-bar-placeholder';
+        let yellowFacebookPlaceholder = document.getElementById(yellowFacebookPlaceholderId);
+        if (yellowFacebookPlaceholder == null) {
+          yellowFacebookPlaceholder = document.createElement('DIV');
+          yellowFacebookPlaceholder.id = yellowFacebookPlaceholderId;
+          this._topPlaceholder.domElement.appendChild(yellowFacebookPlaceholder);
         }
-        if (this._topPlaceholder.domElement) {
-          let yellowFacebookPlaceholderId = 'top-bar-placeholder';
-          let yellowFacebookPlaceholder = document.getElementById(yellowFacebookPlaceholderId);
-          if (yellowFacebookPlaceholder == null) {
-            yellowFacebookPlaceholder = document.createElement('DIV');
-            yellowFacebookPlaceholder.id = yellowFacebookPlaceholderId;
-            this._topPlaceholder.domElement.appendChild(yellowFacebookPlaceholder);
-          }
-          const topBar : React.ReactElement<ITopBarProps> = React.createElement(TopBar, { userDisplayName: this.context.pageContext.user.displayName });
-          ReactDOM.render(topBar, yellowFacebookPlaceholder);
-        }
+        const topBar: React.ReactElement<ITopBarProps> = React.createElement(TopBar,
+          {
+            userLoginName: this.context.pageContext.user.email,
+            userDisplayName: this.context.pageContext.user.displayName
+          });
+        ReactDOM.render(topBar, yellowFacebookPlaceholder);
+      }
     }
   }
 

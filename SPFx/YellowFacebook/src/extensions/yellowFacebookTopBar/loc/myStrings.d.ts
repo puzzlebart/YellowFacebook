@@ -1,5 +1,5 @@
 declare interface IYellowFacebookTopBarApplicationCustomizerStrings {
-  Title: string;
+  SearchBoxPlaceholderText: string;
 }
 
 declare module 'YellowFacebookTopBarApplicationCustomizerStrings' {

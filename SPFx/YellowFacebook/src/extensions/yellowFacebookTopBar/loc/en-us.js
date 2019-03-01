@@ -1,5 +1,5 @@
 define([], function() {
   return {
-    "Title": "YellowFacebookTopBarApplicationCustomizer"
+    "SearchBoxPlaceholderText": "Search"
   }
 });
