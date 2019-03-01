@@ -17,7 +17,7 @@ export default class Images extends React.Component<IImagesProps, {}> {
   }
 
   private renderImages() {
-   return this.props.properties.images.map(image => {
+   return this.props.properties.images.slice(0,9).map(image => {
     return <img className={styles.imagePreview} src={image}></img>;
    });
   }

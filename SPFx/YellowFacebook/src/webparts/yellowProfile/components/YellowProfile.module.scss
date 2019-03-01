@@ -31,8 +31,10 @@
                 height: 89px;
                 margin: 1px;
                 > a  {
-                  text-decoration: none;
-                  text-align: bottom;
+                    text-decoration: none;
+                    position: relative;
+                    top: -20px;
+                    
                 }
             }
         }

@@ -20,13 +20,8 @@ export default class Friends extends React.Component<IFriendsProps, {}> {
 
   private renderFriends() {
     return this.props.friends.map(friend => {
-      return  <div
-      className={styles.friend}
-      style={ {
-        backgroundImage: "url('https://vignette.wikia.nocookie.net/simpsons/images/5/57/Lisa_Simpson2.png/revision/latest?cb=20180319000458')",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "50px"
-        } }>
+      return  <div className={styles.friend}>
+        <img className={styles.imagePreview} src={"https://vignette.wikia.nocookie.net/simpsons/images/5/57/Lisa_Simpson2.png/revision/latest?cb=20180319000458"}></img>
         <a href="">Lisa Simpson</a>
         </div>;
     });
