@@ -3,7 +3,6 @@ import styles from './YellowFacebook.module.scss';
 import { IYellowFacebookProps } from './IYellowFacebookProps';
 import {
   DocumentCard,
-  DocumentCardType,
   DocumentCardActivity,
   DocumentCardTitle,
   DocumentCardPreview,
@@ -26,6 +25,7 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
 
   public async componentDidMount() {
     await this.fetchData();
+    // console.log(this.state.properties);
   }
 
   public render(): React.ReactElement<IYellowFacebookProps> {
@@ -33,7 +33,7 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
       return null;
     } else return (
       <div className={ styles.yellowFacebook }>
-
+      
       <div className={styles.feed}>
           {this.renderItems(this.state.adds)}
         </div>
@@ -52,7 +52,7 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
             height: 300
           }
         ]
-      };
+      }
       return (
         <DocumentCard className={styles.statusUpdateHeader }>
           <DocumentCardActivity
@@ -67,9 +67,11 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
   }
 
   private async fetchData() {
+    let data2 = await fetch("https://puzzlebart-saas.herokuapp.com/characters?Name=Bart%20Simpson",{headers:{apikey:"EATMYSHORTS"}}).then(d=>d.text().then(r=>r))
     let data = await sp.web.lists.getByTitle('Adds').items.getAll();
-
-    let adds = data.map(dat =>{
+    console.log(data2)
+    
+    let adds =  data.map(dat =>{
       return {
       title: dat.Title,
       description: dat.Description,
@@ -77,7 +79,7 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
       demography: dat.Demography,
       companylogo: dat.CompanyLogo,
       company: dat.Company
-      };
+      }
     });
     this.setState({ adds, isLoading: false });
   }
