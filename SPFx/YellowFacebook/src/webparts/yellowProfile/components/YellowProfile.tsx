@@ -52,7 +52,7 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
       dates.push(newDate);
     }
 
-    dates.sort((a, b) =>  b.getDate() < a.getDate() ? -1 :1);
+    dates.sort((a, b) => b.getDate() < a.getDate() ? -1 : 1);
     console.log(dates);
 
     return quotes.map((q, i) => {
@@ -69,14 +69,15 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
   }
 
   private async fetchData() {
+    let name = this.getUrlParamByName('name');
     let res = await this.props.httpClient.get(
-      'https://puzzlebart-saas.herokuapp.com/characters?Name=Lisa%20Simpson',
+      `https://puzzlebart-saas.herokuapp.com/characters?Name=${name}`,
       HttpClient.configurations.v1, { headers: { apikey: 'EATMYSHORTS' } });
     let chars = await res.json();
     console.log(chars[0]);
     let images = [];
     for (let i = 0; i < 10; i++) {
-      if (chars[0].Photos[i] != null) {
+      if (chars[0].Photos && chars[0].Photos[i] != null) {
         images.push(chars[0].Photos[i]);
       }
     }
@@ -95,6 +96,14 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
 
   private randomDate(start, end) {
     return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+  }
+
+  private getUrlParamByName(name: string): string {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    const regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
+    const results = regex.exec(location.search);
+    console.log(results);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
   }
 
 }
