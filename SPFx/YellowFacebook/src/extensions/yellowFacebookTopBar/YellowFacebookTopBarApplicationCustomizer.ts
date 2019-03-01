@@ -56,7 +56,7 @@ export default class YellowFacebookTopBarApplicationCustomizer
             yellowFacebookPlaceholder.id = yellowFacebookPlaceholderId;
             this._topPlaceholder.domElement.appendChild(yellowFacebookPlaceholder);
           }
-          const topBar : React.ReactElement<ITopBarProps> = React.createElement(TopBar);
+          const topBar : React.ReactElement<ITopBarProps> = React.createElement(TopBar, { userDisplayName: this.context.pageContext.user.displayName });
           ReactDOM.render(topBar, yellowFacebookPlaceholder);
         }
     }
