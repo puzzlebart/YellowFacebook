@@ -1,8 +1,13 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
-
 .topBar {
-  width: 100%;
-  height: 50px;
-  position: absolute;
-  background-color: #FED90F;
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    background-color: #FED90F;
+    .searchBox {
+        width: 600px;
+        position: absolute;
+        left: 50px;
+        margin-top: 10px;
+    }
 }
