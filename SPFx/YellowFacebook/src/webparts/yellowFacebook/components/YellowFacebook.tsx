@@ -26,16 +26,14 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
 
   public async componentDidMount() {
     await this.fetchData();
-    // console.log(this.state.properties);
   }
-
 
   public render(): React.ReactElement<IYellowFacebookProps> {
     if (this.state.isLoading) {
       return null;
     } else return (
       <div className={ styles.yellowFacebook }>
-      
+
       <div className={styles.feed}>
           {this.renderAdds(this.state.adds)}
         </div>
@@ -54,7 +52,7 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
             height: 300
           }
         ]
-      }
+      };
       return (
         <DocumentCard className={styles.statusUpdateHeader }>
           <DocumentCardActivity
@@ -81,7 +79,7 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
   }
 
   private async fetchData() {
-    let data2 = await fetch("https://puzzlebart-saas.herokuapp.com/characters?Name=Bart%20Simpson",{headers:{apikey:"EATMYSHORTS"}}).then(d=>d.text().then(r=>r))
+    let data2 = await fetch("https://puzzlebart-saas.herokuapp.com/characters?Name=Bart%20Simpson",{headers:{apikey:"EATMYSHORTS"}}).then(d=>d.text().then(r=>r));
     let data = await sp.web.lists.getByTitle('Adds').items.getAll();
     console.log(JSON.parse(data2)[0])
     console.log(JSON.parse(data2)[0].Name)
@@ -95,7 +93,7 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
       demography: dat.Demography,
       companylogo: dat.CompanyLogo,
       company: dat.Company
-      }
+      };
     });
     this.setState({ adds, isLoading: false });
   }

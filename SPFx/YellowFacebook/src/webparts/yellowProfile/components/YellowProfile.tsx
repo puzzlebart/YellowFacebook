@@ -35,7 +35,7 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
 
         <div className={styles.leftComponentsContainer}>
           <Presentation properties={this.state.properties} />
-          <Images properties ={this.state.properties}/>
+          <Images properties={this.state.properties} />
           <Friends friends={this.state.properties.friends} />
         </div>
         <div className={styles.feed}>
@@ -45,14 +45,22 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
     );
   }
 
-  private renderItems(quoteString: string) {
-    let quotes: string[] = quoteString.split(';');
+  private renderItems(quotes: string[]) {
+    let dates: Date[] = [];
+    for (let i = 0; i < quotes.length; i++) {
+      let newDate = this.randomDate(new Date(2019, 1, 2), new Date(2019, 2, 1));
+      dates.push(newDate);
+    }
 
-    return quotes.map(q => {
+    dates.sort((a, b) =>  b.getDate() < a.getDate() ? -1 :1);
+    console.log(dates);
+
+    return quotes.map((q, i) => {
+
       return (
         <DocumentCard type={DocumentCardType.compact} className={styles.statusUpdateHeader}>
           <DocumentCardActivity
-            activity='Created sometime ago...'
+            activity={dates[i].toDateString()}
             people={[{ name: this.state.properties.name, profileImageSrc: this.state.properties.profilePic }]} />
           <DocumentCardTitle title={q} />
         </DocumentCard>
@@ -65,18 +73,28 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
       'https://puzzlebart-saas.herokuapp.com/characters?Name=Lisa%20Simpson',
       HttpClient.configurations.v1, { headers: { apikey: 'EATMYSHORTS' } });
     let chars = await res.json();
-    console.log(chars);
+    console.log(chars[0]);
+    let images = [];
+    for (let i = 0; i < 10; i++) {
+      if (chars[0].Photos[i] != null) {
+        images.push(chars[0].Photos[i]);
+      }
+    }
     let data = await sp.web.lists.getByTitle('Properties').items.getAll();
     let properties = {
-      name: data[0].Title,
+      name: chars[0].Name,
       gender: data[0].Gender,
       occupation: data[0].Occupation,
-      quotes: data[0].Quotes,
-      profilePic: data[0].ProfilePicture,
+      quotes: chars[0].Quotes,
+      profilePic: chars[0].Picture,
       friends: JSON.parse(data[0].Friends),
-      images: data[0].Images.split(",")
+      images: images
     };
     this.setState({ properties, isLoading: false });
+  }
+
+  private randomDate(start, end) {
+    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
   }
 
 }
