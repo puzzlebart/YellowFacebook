@@ -4,11 +4,15 @@
   
   .feed {
     display: block;
-    width: 600px;
+    width: 480px;
     padding: 5px;
     .statusUpdateHeader {
+        max-width: 480px;
         display: block;
         margin-bottom: 15px;
+      > div{
+        width:480px;
+      }
     }
 }
 }

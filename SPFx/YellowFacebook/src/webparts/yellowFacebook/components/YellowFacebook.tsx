@@ -13,14 +13,13 @@ import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { sp } from '@pnp/sp';
 
 
-export default class YellowFacebook extends React.Component<IYellowFacebookProps, { adds?: any, isLoading: boolean }> {
+export default class YellowFacebook extends React.Component<IYellowFacebookProps, { adds?: any, quotes?: any, isLoading: boolean }> {
 
   constructor(props) {
     super(props);
 
     this.state = {
-      isLoading: true,
-      adds: null
+      isLoading: true
     };
   }
 
@@ -28,17 +27,30 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
     await this.fetchData();
   }
 
+  public randomize(a, b) { return Math.random() - 0.5;}
+
   public render(): React.ReactElement<IYellowFacebookProps> {
     if (this.state.isLoading) {
       return null;
-    } else return (
-      <div className={ styles.yellowFacebook }>
+    } else {
+      let adds = this.renderAdds(this.state.adds);
+      let quotes =this.renderQuote(this.state.quotes);
+      let feed = quotes.concat(adds);
+      console.log("1");
+      console.log(quotes);
+      console.log("2");
+      console.log(feed);
+      return (
+        <div className={ styles.yellowFacebook }>
 
-      <div className={styles.feed}>
-          {this.renderAdds(this.state.adds)}
+        <div className={styles.feed}>
+            {/* {this.shuffle(this.renderQuote(this.state.quotes))} */}
+            {feed.sort(this.randomize)}
+            
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 
   private renderAdds(adds: any) {
@@ -48,13 +60,13 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
           {
             previewImageSrc: q.picture,
             imageFit: ImageFit.contain,
-            width: 318,
-            height: 300
+            width: 480,
+            height: 400
           }
         ]
       };
       return (
-        <DocumentCard className={styles.statusUpdateHeader }>
+        <DocumentCard className={styles.statusUpdateHeader} >
           <DocumentCardActivity
             activity='Advertisement'
             people={[{ name: q.company, profileImageSrc: q.companylogo }]} />
@@ -66,25 +78,49 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
     });
   }
 
-  private renderQuote(quote, author) {
-
-      return (
-        <DocumentCard type={DocumentCardType.compact} className={styles.statusUpdateHeader}>
+  private renderQuote(quotes) {
+      return quotes.map(quote => {
+        return(<DocumentCard className={styles.statusUpdateHeader}>
           <DocumentCardActivity
             activity='Created sometime ago...'
-            people={[{ name: author.name, profileImageSrc: author.picture }]} />
-          <DocumentCardTitle title={quote} />
+            people={[{ name: quote.author, profileImageSrc: quote.picture }]} />
+          <DocumentCardTitle title={quote.quote} />
         </DocumentCard>
       );
+    });
   }
 
   private async fetchData() {
+    let randomQuotes = []
+    for(let i = 0; i<50 ;i++ ){
+      randomQuotes.push(await fetch("https://puzzlebart-saas.herokuapp.com/quotes",{headers:{apikey:"EATMYSHORTS"}}).then(d=>d.text().then(r=>r)));
+    }
+    console.log("##################");
+    console.log(randomQuotes);
+    console.log("##################");
     let data2 = await fetch("https://puzzlebart-saas.herokuapp.com/characters?Name=Bart%20Simpson",{headers:{apikey:"EATMYSHORTS"}}).then(d=>d.text().then(r=>r));
     let data = await sp.web.lists.getByTitle('Adds').items.getAll();
     console.log(JSON.parse(data2)[0]);
     console.log(JSON.parse(data2)[0].Name);
     console.log(JSON.parse(data2)[0].Photos);
     console.log(JSON.parse(data2)[0].Quotes);
+    let quotes = randomQuotes.map(quote=> {
+      let qu = JSON.parse(quote);
+      return{
+      quote: qu.Quote,
+      author: qu.Name,
+      picture: qu.Picture
+      }
+    })
+    let picture = JSON.parse(data2)[0].Picture;
+    let author = JSON.parse(data2)[0].Name;
+    // let quotes = (JSON.parse(data2)[0].Quotes).map(quote =>{
+    //   return{
+    //     quote: quote,
+    //     author: author,
+    //     picture: picture
+    //   }
+    // })
     let adds =  data.map(dat =>{
       return {
       title: dat.Title,
@@ -95,6 +131,7 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
       company: dat.Company
       };
     });
-    this.setState({ adds, isLoading: false });
+    this.setState({ adds:adds, quotes:quotes, isLoading: false });
   }
+   
 }
