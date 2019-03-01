@@ -60,8 +60,9 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
         <DocumentCard className={styles.statusUpdateHeader }>
           <DocumentCardActivity
             activity='Advertisement'
-            people={[{ name: q.title, profileImageSrc: q.picture }]} />
-          <DocumentCardTitle title={q.description}  />
+            people={[{ name: q.company, profileImageSrc: q.companylogo }]} />
+          <DocumentCardTitle title={q.title} />
+          <DocumentCardTitle title={q.description} showAsSecondaryTitle={true} />
           <DocumentCardPreview {...previewProps} />
         </DocumentCard>
       );
@@ -76,7 +77,9 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
       title: dat.Title,
       description: dat.Description,
       picture: dat.Picture,
-      demography: dat.Demography
+      demography: dat.Demography,
+      companylogo: dat.CompanyLogo,
+      company: dat.Company
       }
     });
     this.setState({ adds, isLoading: false });
