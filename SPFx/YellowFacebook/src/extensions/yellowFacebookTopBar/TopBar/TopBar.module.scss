@@ -9,5 +9,8 @@
         position: absolute;
         left: 50px;
         margin-top: 10px;
+        > div {
+          background-color: white;
+        }
     }
 }
