@@ -36,6 +36,7 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
       let adds = this.renderAdds(this.state.adds);
       let quotes =this.renderQuote(this.state.quotes);
       let feed = quotes.concat(adds);
+      feed.sort(this.randomize);
       console.log("1");
       console.log(quotes);
       console.log("2");
@@ -45,8 +46,8 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
 
         <div className={styles.feed}>
             {/* {this.shuffle(this.renderQuote(this.state.quotes))} */}
-            {feed.sort(this.randomize)}
-            
+            {feed}
+
           </div>
         </div>
       );
@@ -79,10 +80,17 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
   }
 
   private renderQuote(quotes) {
-      return quotes.map(quote => {
+    let dates: Date[] = [];
+    for (let i = 0; i < quotes.length; i++) {
+      let newDate = this.randomDate(new Date(2019, 1, 2), new Date(2019, 2, 1));
+      dates.push(newDate);
+    }
+    dates.sort((a, b) => b.getDate() < a.getDate() ? -1 : 1);
+
+      return quotes.map((quote, i) => {
         return(<DocumentCard className={styles.statusUpdateHeader}>
           <DocumentCardActivity
-            activity='Created sometime ago...'
+            activity={dates[i].toDateString()}
             people={[{ name: quote.author, profileImageSrc: quote.picture }]} />
           <DocumentCardTitle title={quote.quote} />
         </DocumentCard>
@@ -130,5 +138,9 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
     });
     this.setState({ adds:adds, quotes:quotes, isLoading: false });
   }
-   
+
+  private randomDate(start, end) {
+    return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+  }
+
 }
