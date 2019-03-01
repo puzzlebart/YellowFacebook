@@ -28,7 +28,6 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
     await this.fetchData();
   }
 
-
   public render(): React.ReactElement<IYellowFacebookProps> {
     if (this.state.isLoading) {
       return null;
