@@ -70,8 +70,10 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
   private async fetchData() {
     let data2 = await fetch("https://puzzlebart-saas.herokuapp.com/characters?Name=Bart%20Simpson",{headers:{apikey:"EATMYSHORTS"}}).then(d=>d.text().then(r=>r))
     let data = await sp.web.lists.getByTitle('Adds').items.getAll();
-    console.log(data2)
-    
+    console.log(JSON.parse(data2)[0])
+    console.log(JSON.parse(data2)[0].Name)
+    console.log(JSON.parse(data2)[0].Photos)
+    console.log(JSON.parse(data2)[0].Quotes)
     let adds =  data.map(dat =>{
       return {
       title: dat.Title,
