@@ -12,7 +12,9 @@ export default class Friends extends React.Component<IFriendsProps, {}> {
     return (
       <div className={styles.leftComponent}>
       <h3>Friends</h3>
-      {this.renderFriends()}
+      <div className={styles.friends}>
+        {this.renderFriends()}
+      </div>
 
       </div>
     );
@@ -20,10 +22,10 @@ export default class Friends extends React.Component<IFriendsProps, {}> {
 
   private renderFriends() {
     return this.props.friends.map(friend => {
-      return  <div className={styles.friend}>
+      return  <a href="#"><div className={styles.friend}>
         <img className={styles.imagePreview} src={"https://vignette.wikia.nocookie.net/simpsons/images/5/57/Lisa_Simpson2.png/revision/latest?cb=20180319000458"}></img>
-        <a href="">Lisa Simpson</a>
-        </div>;
+        <a>Lisa Simpson</a>
+        </div></a>;
     });
   }
 

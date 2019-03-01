@@ -26,14 +26,20 @@
                 width: 89px;
                 object-fit: cover;
             }
-            .friend {
-                width: 89px;
-                height: 89px;
-                margin: 1px;
-                >a {
-                    text-decoration: none;
-                    position: relative;
-                    top: -20px;
+            .friends{
+                display: flex;
+                .friend {
+                    width: 89px;
+                    height: 89px;
+                    margin: 1px;
+                    > a  {
+                        text-decoration: none;
+                        position: relative;
+                        top: -20px;
+                        width: 100%;
+                        height: 100%
+
+                    }
                 }
             }
         }
