@@ -17,7 +17,8 @@ export default class YellowProfileWebPart extends BaseClientSideWebPart<IYellowP
     const element: React.ReactElement<IYellowProfileProps > = React.createElement(
       YellowProfile,
       {
-        httpClient: this.context.httpClient
+        httpClient: this.context.httpClient,
+        userDisplayName: this.context.pageContext.user.displayName
       }
     );
 
