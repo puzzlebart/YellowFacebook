@@ -10,6 +10,7 @@ import {
 import * as strings from 'YellowFacebookWebPartStrings';
 import YellowFacebook from './components/YellowFacebook';
 import { IYellowFacebookProps } from './components/IYellowFacebookProps';
+import { sp } from '@pnp/sp';
 
 export interface IYellowFacebookWebPartProps {
   description: string;
@@ -27,6 +28,11 @@ export default class YellowFacebookWebPart extends BaseClientSideWebPart<IYellow
 
     ReactDom.render(element, this.domElement);
   }
+
+  protected async onInit(): Promise<void> {
+    await super.onInit();
+    sp.setup({ spfxContext: this.context });
+}
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
