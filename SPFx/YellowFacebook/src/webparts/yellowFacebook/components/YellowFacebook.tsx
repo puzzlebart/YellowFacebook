@@ -3,7 +3,6 @@ import styles from './YellowFacebook.module.scss';
 import { IYellowFacebookProps } from './IYellowFacebookProps';
 import {
   DocumentCard,
-  DocumentCardType,
   DocumentCardActivity,
   DocumentCardTitle,
   DocumentCardPreview,
@@ -44,7 +43,6 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
   }
 
   private renderItems(adds: any) {
-    console.log(adds)
     return adds.map(q => {
       let previewProps: IDocumentCardPreviewProps = {
         previewImages: [
@@ -70,7 +68,9 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
   }
 
   private async fetchData() {
+    let data2 = await fetch("https://puzzlebart-saas.herokuapp.com/characters?Name=Bart%20Simpson",{headers:{apikey:"EATMYSHORTS"}}).then(d=>d.text().then(r=>r))
     let data = await sp.web.lists.getByTitle('Adds').items.getAll();
+    console.log(data2)
     
     let adds =  data.map(dat =>{
       return {
