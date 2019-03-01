@@ -26,7 +26,6 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
 
   public async componentDidMount() {
     await this.fetchData();
-    // console.log(this.state.properties);
   }
 
 
@@ -35,7 +34,7 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
       return null;
     } else return (
       <div className={ styles.yellowFacebook }>
-      
+
       <div className={styles.feed}>
           {this.renderItems(this.state.adds)}
         </div>
@@ -44,7 +43,6 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
   }
 
   private renderItems(adds: any) {
-    console.log(adds)
     return adds.map(q => {
       let previewProps: IDocumentCardPreviewProps = {
         previewImages: [
@@ -55,7 +53,7 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
             height: 300
           }
         ]
-      }
+      };
       return (
         <DocumentCard className={styles.statusUpdateHeader }>
           <DocumentCardActivity
@@ -71,8 +69,8 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
 
   private async fetchData() {
     let data = await sp.web.lists.getByTitle('Adds').items.getAll();
-    
-    let adds =  data.map(dat =>{
+
+    let adds = data.map(dat =>{
       return {
       title: dat.Title,
       description: dat.Description,
@@ -80,7 +78,7 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
       demography: dat.Demography,
       companylogo: dat.CompanyLogo,
       company: dat.Company
-      }
+      };
     });
     this.setState({ adds, isLoading: false });
   }
