@@ -1,3 +1,5 @@
+import { HttpClient } from "@microsoft/sp-http";
+
 export interface IYellowProfileProps {
-  description: string;
+  httpClient: HttpClient;
 }

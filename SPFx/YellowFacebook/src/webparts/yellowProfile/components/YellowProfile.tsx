@@ -11,6 +11,7 @@ import {
   DocumentCardTitle
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { sp } from '@pnp/sp';
+import { HttpClient } from '@microsoft/sp-http';
 
 export default class YellowProfile extends React.Component<IYellowProfileProps, { properties?: any, isLoading: boolean }> {
   constructor(props) {
@@ -60,6 +61,11 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
   }
 
   private async fetchData() {
+    let res = await this.props.httpClient.get(
+      'https://puzzlebart-saas.herokuapp.com/characters?Name=Lisa%20Simpson',
+      HttpClient.configurations.v1, { headers: { apikey: 'EATMYSHORTS' } });
+    let chars = await res.json();
+    console.log(chars);
     let data = await sp.web.lists.getByTitle('Properties').items.getAll();
     let properties = {
       name: data[0].Title,
