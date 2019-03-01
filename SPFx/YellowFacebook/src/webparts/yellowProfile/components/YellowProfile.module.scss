@@ -30,13 +30,13 @@
             a {
                 text-decoration: none;
             }
-            .friends{
+            .friends {
                 display: flex;
                 .friend {
                     width: 89px;
                     height: 89px;
                     margin: 1px;
-                    a  {
+                    a {
                         background-image: linear-gradient(#11111104, #111111c2);
                         text-decoration: none;
                         position: relative;
@@ -55,6 +55,8 @@
         .statusUpdateHeader {
             display: block;
             margin-bottom: 15px;
+            height: auto;
+            padding: 15px;
         }
     }
 }

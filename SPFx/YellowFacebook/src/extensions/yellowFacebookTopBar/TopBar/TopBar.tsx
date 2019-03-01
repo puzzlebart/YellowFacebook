@@ -2,10 +2,12 @@ import * as React from 'react';
 import styles from './TopBar.module.scss';
 import * as strings from 'YellowFacebookTopBarApplicationCustomizerStrings';
 import { ITopBarProps } from './ITopBarProps';
+import { ITopBarState } from './ITopBarState';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
-import { Persona, PersonaSize, IPersonaSharedProps, IPersonaStyles, IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
+import { Persona, PersonaSize, IPersonaSharedProps } from 'office-ui-fabric-react/lib/Persona';
 
-export default class TopBar extends React.Component<ITopBarProps, {}> {
+export default class TopBar extends React.Component<ITopBarProps, ITopBarState> {
+
   public render() {
 
     const persona: IPersonaSharedProps = {
@@ -14,9 +16,14 @@ export default class TopBar extends React.Component<ITopBarProps, {}> {
     };
 
     return (
-      <div id='top' className={styles.topBar}>
+      <div className={styles.topBar}>
       <img className={styles.logo} src="/sites/YellowFacebook/SiteAssets/img/YF.PNG" alt="YF"/>
-        <SearchBox className={styles.searchBox} placeholder={strings.SearchBoxPlaceholderText} />
+        <SearchBox
+        className={styles.searchBox}
+        placeholder={strings.SearchBoxPlaceholderText}
+        onChanged={(searchTerm) => this.updateSearchTerm(searchTerm)}
+        onSearch={this._onSearch}
+        />
 
         <div
           className={styles.userProfileLink}
@@ -28,6 +35,14 @@ export default class TopBar extends React.Component<ITopBarProps, {}> {
         </div>
       </div>
     );
+  }
+
+  private updateSearchTerm(searchTerm: string) {
+    this.setState({ searchTerm });
+  }
+
+  private _onSearch = () => {
+    location.replace(`/sites/HomerSimpson?name=${this.state.searchTerm}`);
   }
 
 }

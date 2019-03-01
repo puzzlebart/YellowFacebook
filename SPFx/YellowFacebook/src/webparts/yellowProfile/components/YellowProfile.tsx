@@ -69,7 +69,7 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
   }
 
   private async fetchData() {
-    let name = this.getUrlParamByName('name');
+    let name = this.getUrlParamByName('name') ? this.getUrlParamByName('name') : this.props.userDisplayName;
     let res = await this.props.httpClient.get(
       `https://puzzlebart-saas.herokuapp.com/characters?Name=${name}`,
       HttpClient.configurations.v1, { headers: { apikey: 'EATMYSHORTS' } });
