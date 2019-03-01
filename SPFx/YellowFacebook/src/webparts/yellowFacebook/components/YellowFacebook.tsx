@@ -6,7 +6,8 @@ import {
   DocumentCardActivity,
   DocumentCardTitle,
   DocumentCardPreview,
-  IDocumentCardPreviewProps
+  IDocumentCardPreviewProps,
+  DocumentCardType
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { sp } from '@pnp/sp';
@@ -36,13 +37,13 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
       <div className={ styles.yellowFacebook }>
       
       <div className={styles.feed}>
-          {this.renderItems(this.state.adds)}
+          {this.renderAdds(this.state.adds)}
         </div>
       </div>
     );
   }
 
-  private renderItems(adds: any) {
+  private renderAdds(adds: any) {
     return adds.map(q => {
       let previewProps: IDocumentCardPreviewProps = {
         previewImages: [
@@ -65,6 +66,18 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
         </DocumentCard>
       );
     });
+  }
+
+  private renderQuote(quote, author) {
+
+      return (
+        <DocumentCard type={DocumentCardType.compact} className={styles.statusUpdateHeader}>
+          <DocumentCardActivity
+            activity='Created sometime ago...'
+            people={[{ name: author.name, profileImageSrc: author.picture }]} />
+          <DocumentCardTitle title={quote} />
+        </DocumentCard>
+      );
   }
 
   private async fetchData() {
