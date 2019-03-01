@@ -91,7 +91,7 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
   }
 
   private async fetchData() {
-    let randomQuotes = []
+    let randomQuotes = [];
     for(let i = 0; i<50 ;i++ ){
       randomQuotes.push(await fetch("https://puzzlebart-saas.herokuapp.com/quotes",{headers:{apikey:"EATMYSHORTS"}}).then(d=>d.text().then(r=>r)));
     }
@@ -110,8 +110,8 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
       quote: qu.Quote,
       author: qu.Name,
       picture: qu.Picture
-      }
-    })
+      };
+    });
     let picture = JSON.parse(data2)[0].Picture;
     let author = JSON.parse(data2)[0].Name;
     // let quotes = (JSON.parse(data2)[0].Quotes).map(quote =>{
