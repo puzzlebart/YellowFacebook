@@ -20,7 +20,7 @@
             .bodyIcon {
                 margin-right: 5px;
             }
-            .imagePreview{
+            .imagePreview {
                 margin: 1px;
                 height: 89px;
                 width: 89px;
@@ -30,11 +30,10 @@
                 width: 89px;
                 height: 89px;
                 margin: 1px;
-                > a  {
+                >a {
                     text-decoration: none;
                     position: relative;
                     top: -20px;
-                    
                 }
             }
         }
@@ -45,6 +44,7 @@
         padding: 5px;
         .statusUpdateHeader {
             display: block;
+            padding-bottom: 15px;
         }
     }
 }

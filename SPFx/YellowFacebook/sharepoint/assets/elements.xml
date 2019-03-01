@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <CustomAction
+        Title="YellowFacebookTopBar"
+        Location="ClientSideExtension.ApplicationCustomizer"
+        ClientSideComponentId="e697067b-2c4b-486a-a5dc-3f20a8a525c3"
+        ClientSideComponentProperties="{&quot;testMessage&quot;:&quot;Test message&quot;}">
+    </CustomAction>
+</Elements>

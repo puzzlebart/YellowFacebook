@@ -17,11 +17,20 @@
           "manifest": "./src/webparts/yellowProfile/YellowProfileWebPart.manifest.json"
         }
       ]
+    },
+    "yellow-facebook-top-bar-application-customizer": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/yellowFacebookTopBar/YellowFacebookTopBarApplicationCustomizer.js",
+          "manifest": "./src/extensions/yellowFacebookTopBar/YellowFacebookTopBarApplicationCustomizer.manifest.json"
+        }
+      ]
     }
   },
   "externals": {},
   "localizedResources": {
     "YellowFacebookWebPartStrings": "lib/webparts/yellowFacebook/loc/{locale}.js",
-    "YellowProfileWebPartStrings": "lib/webparts/yellowProfile/loc/{locale}.js"
+    "YellowProfileWebPartStrings": "lib/webparts/yellowProfile/loc/{locale}.js",
+    "YellowFacebookTopBarApplicationCustomizerStrings": "lib/extensions/yellowFacebookTopBar/loc/{locale}.js"
   }
 }

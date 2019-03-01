@@ -4,7 +4,21 @@
     "name": "yellow-facebook-client-side-solution",
     "id": "13d9722b-c39d-4f66-8b11-358eedadc041",
     "version": "1.0.0.0",
-    "includeClientSideAssets": true
+    "includeClientSideAssets": true,
+    "features": [
+      {
+        "title": "Application Extension - Deployment of custom action.",
+        "description": "Deploys a custom action with ClientSideComponentId association",
+        "id": "ad35eae9-cb54-4c3e-a253-18c1280535cd",
+        "version": "1.0.0.0",
+        "assets": {
+          "elementManifests": [
+            "elements.xml",
+            "clientsideinstance.xml"
+          ]
+        }
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/yellow-facebook.sppkg"
