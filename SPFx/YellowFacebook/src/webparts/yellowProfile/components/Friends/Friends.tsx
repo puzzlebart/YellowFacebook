@@ -44,7 +44,6 @@ export default class Friends extends React.Component<IFriendsProps, {properties?
     );
   }
 
-
   private async fetchData() {
     let friends=JSON.parse(await fetch("https://puzzlebart-saas.herokuapp.com/quotes?amount=9",{headers:{apikey:"EATMYSHORTS"}}).then(d=>d.text().then(r=>r)));
     this.setState({properties:friends, isLoading:false});

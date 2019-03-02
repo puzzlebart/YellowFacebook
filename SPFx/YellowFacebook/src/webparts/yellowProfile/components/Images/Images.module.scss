@@ -1,0 +1,28 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+.leftComponent {
+    background-color: #ffffff;
+    margin: 5px 0;
+    border: 1px solid #dddfe2;
+    padding: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    >h3 {
+        @include ms-font-l;
+        width: 100%;
+    }
+    .headerIcon {
+        margin-right: 5px;
+        font-size: 20px;
+    }
+    .imageContainer {
+        height: 89px;
+        width: 89px;
+        margin: 1px;
+        .imagePreview {
+            height: 100%;
+            width: 100%;
+            margin: 1px;
+            object-fit: cover;
+        }
+    }
+}
