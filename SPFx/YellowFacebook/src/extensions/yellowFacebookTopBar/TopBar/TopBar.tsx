@@ -17,21 +17,23 @@ export default class TopBar extends React.Component<ITopBarProps, ITopBarState> 
 
     return (
       <div className={styles.topBar}>
-      <img className={styles.logo} src="/sites/YellowFacebook/SiteAssets/img/YF.PNG" alt="YF"/>
+        <div onClick={() => location.replace('/sites/YellowFacebook')}>
+          <img className={styles.logo} src="/sites/YellowFacebook/SiteAssets/img/YF.PNG" alt="YF" />
+        </div>
         <SearchBox
-        className={styles.searchBox}
-        placeholder={strings.SearchBoxPlaceholderText}
-        onChanged={(searchTerm) => this.updateSearchTerm(searchTerm)}
-        onSearch={this._onSearch}
+          className={styles.searchBox}
+          placeholder={strings.SearchBoxPlaceholderText}
+          onChanged={(searchTerm) => this.updateSearchTerm(searchTerm)}
+          onSearch={this._onSearch}
         />
 
         <div
           className={styles.userProfileLink}
           onClick={() => location.replace('/sites/HomerSimpson')}>
-        <Persona
-          {...persona}
-          size={PersonaSize.size28}
-        />
+          <Persona
+            {...persona}
+            size={PersonaSize.size28}
+          />
         </div>
       </div>
     );
