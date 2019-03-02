@@ -18,7 +18,7 @@ export default class Friends extends React.Component<IFriendsProps, {properties?
     if (this.state.isLoading) {
       return null;
     } else{
-      let numFriends = Math.floor(Math.random() * 500) + 17
+      let numFriends = Math.floor(Math.random() * 500) + 17;
       return (
         <div className={styles.leftComponent}>
           <h3><Icon iconName="People" className={styles.headerIcon}/>Friends ({numFriends})</h3>
@@ -44,36 +44,9 @@ export default class Friends extends React.Component<IFriendsProps, {properties?
     );
   }
 
-//   <a href={friend.Name}><div className={styles.friend}>
-//   <img className={styles.imagePreview} src={friend.Picture}></img>
-//   <a>{friend.Name}</a>
-// </div></a>
 
-  //Does not work yet
   private async fetchData() {
     let friends=JSON.parse(await fetch("https://puzzlebart-saas.herokuapp.com/quotes?amount=9",{headers:{apikey:"EATMYSHORTS"}}).then(d=>d.text().then(r=>r)));
-    //let friends = fetch("https://puzzlebart-saas.herokuapp.com/quotes?amount=9", { headers: { apikey: "EATMYSHORTS" } });
-    console.log(friends);
     this.setState({properties:friends, isLoading:false});
-
-    // console.log("ÆÆÆÆÆÆÆ")
-    // return fetch("https://puzzlebart-saas.herokuapp.com/quotes?amount=9", { headers: { apikey: "EATMYSHORTS" } }).then(d => d.json().then(friends => {
-    //   console.log(friends);
-    //   let mappedFriends = friends.map(quote => {
-    //     return {
-    //       author: quote.Name,
-    //       picture: quote.Picture
-    //     };
-    //   });
-    //   console.log(mappedFriends);
-    //   return mappedFriends.map(friend => {
-    //     let ref = "?name=" + friend.author;
-    //     console.log(ref);
-    //     return (<a href={ref}><div className={styles.friend}>
-    //       <img className={styles.imagePreview} src={friend.picture}></img>
-    //       <a>{friend.author}</a>
-    //     </div></a>);
-    //   })
-    // }));
   }
 }
