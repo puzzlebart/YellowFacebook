@@ -81,14 +81,12 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
         images.push(chars[0].Photos[i]);
       }
     }
-    let data = await sp.web.lists.getByTitle('Properties').items.getAll();
     let properties = {
       name: chars[0].Name,
       gender: chars[0].Gender,
       occupation: chars[0].Occupation,
       quotes: chars[0].Quotes,
       profilePic: chars[0].Picture,
-      friends: JSON.parse(data[0].Friends),
       id: chars[0].Id,
       images: images
     };
