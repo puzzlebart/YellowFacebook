@@ -17,7 +17,7 @@ export default class TopBar extends React.Component<ITopBarProps, ITopBarState> 
 
     return (
       <div className={styles.topBar}>
-        <div onClick={() => location.replace('/sites/YellowFacebook')}>
+        <div onClick={() => location.replace('/sites/YellowFacebook_v2/SitePages/Newsfeed.aspx')}>
           <img className={styles.logo} src="/sites/YellowFacebook/SiteAssets/img/YF.PNG" alt="YF" />
         </div>
         <SearchBox
