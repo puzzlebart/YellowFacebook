@@ -22,7 +22,7 @@ export default class YellowFacebookWebPart extends BaseClientSideWebPart<IYellow
     const element: React.ReactElement<IYellowFacebookProps > = React.createElement(
       YellowFacebook,
       {
-        description: this.properties.description
+        description: this.context.pageContext.web.absoluteUrl
       }
     );
 

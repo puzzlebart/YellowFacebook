@@ -6,11 +6,11 @@ import {
   DocumentCardActivity,
   DocumentCardTitle,
   DocumentCardPreview,
-  IDocumentCardPreviewProps,
-  DocumentCardType
+  IDocumentCardPreviewProps
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { sp } from '@pnp/sp';
+import { CompoundButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 
 export default class YellowFacebook extends React.Component<IYellowFacebookProps, { adds?: any, quotes?: any, isLoading: boolean }> {
@@ -37,6 +37,11 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
       });
       return (
         <div className={styles.yellowFacebook}>
+        <div className={styles.newAdd}>
+        <CompoundButton primary={true} secondaryText="You can create a new add here." onClick = {() => location.href = `${this.props.description}/Lists/Adds/NewForm.aspx?IsDlg=1&source=${location.href}`} >
+            Create add
+          </CompoundButton>
+        </div>
 
           <div className={styles.feed}>
             {quotes}
