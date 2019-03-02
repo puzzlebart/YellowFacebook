@@ -38,7 +38,7 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
       return (
         <div className={styles.yellowFacebook}>
         <div className={styles.newAdd}>
-        <CompoundButton secondaryText="You can create a new add here." onClick = {() => location.href = `${this.props.description}/Lists/Adds/NewForm.aspx?IsDlg=1&source=${location.href}`} >
+        <CompoundButton primary={true} secondaryText="You can create a new add here." onClick = {() => location.href = `${this.props.description}/Lists/Adds/NewForm.aspx?IsDlg=1&source=${location.href}`} >
             Create add
           </CompoundButton>
         </div>
