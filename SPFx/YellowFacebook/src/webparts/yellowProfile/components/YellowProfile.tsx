@@ -4,6 +4,7 @@ import { IYellowProfileProps } from './IYellowProfileProps';
 import Friends from './Friends/Friends';
 import Images from './Images/Images';
 import Presentation from './Presentation/Presentation';
+import ProfileHeader from '../ProfileHeader/ProfileHeader';
 import {
   DocumentCard,
   DocumentCardType,
@@ -31,7 +32,7 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
       return null;
     } else return (
       <div className={styles.yellowProfile}>
-
+        <ProfileHeader userName={this.state.properties.name} profilePic={this.state.properties.profilePic} />
         <div className={styles.leftComponentsContainer}>
           <Presentation properties={this.state.properties} />
           <Images properties={this.state.properties} />

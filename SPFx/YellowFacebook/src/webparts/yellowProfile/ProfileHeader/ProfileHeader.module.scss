@@ -1,0 +1,22 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+.container {
+    display: flex;
+    width: 760px;
+    height: 200px;
+    background-color: #fff;
+    margin: 5px 0;
+    border: 1px solid #dddfe2;
+    padding: 12px;
+    .profilePic {
+        height: 100%;
+        >img {
+            height: 200px;
+        }
+    }
+    .userTitle {
+        @include ms-font-l;
+        display: flex;
+        flex-direction: column-reverse;
+        margin: 0 30px;
+    }
+}
