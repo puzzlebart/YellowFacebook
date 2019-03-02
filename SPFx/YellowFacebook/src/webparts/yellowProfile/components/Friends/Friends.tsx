@@ -17,9 +17,10 @@ export default class Friends extends React.Component<IFriendsProps, {properties?
     if (this.state.isLoading) {
       return null;
     } else{
+      let numFriends = Math.floor(Math.random() * 500) + 17
       return (
         <div className={styles.leftComponent}>
-          <h3>Friends</h3>
+          <h3>Friends ({numFriends})</h3>
           <div className={styles.friends}>
             {this.renderFriends(this.state.properties)}
           </div>
