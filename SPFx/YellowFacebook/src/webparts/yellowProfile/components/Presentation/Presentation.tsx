@@ -10,7 +10,8 @@ export default class Presentation extends React.Component<IPresentationProps, {}
 
   public render() {
     let properties = this.props.properties;
-    let occupation = properties.occupation;
+    console.log(properties.occupation);
+    let occupation = (properties.occupation === undefined ? "Unemployed" : properties.occupation);
     let gender = "N/A";
     if( properties.gender != "N/A"){
       gender = (properties.gender === "M") ? "Male" : "Female";
