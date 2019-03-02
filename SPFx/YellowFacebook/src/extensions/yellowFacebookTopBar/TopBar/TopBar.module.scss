@@ -10,6 +10,7 @@
         width: 30px;
         padding: 10px;
         margin: 0 10px;
+        cursor: pointer;
     }
     .searchBox {
         margin-left: 15px;
@@ -18,7 +19,7 @@
         position: absolute;
         left: 50px;
         margin-top: 10px;
-        > div {
+        >div {
             background-color: #fff;
         }
     }
