@@ -33,12 +33,11 @@ export default class Friends extends React.Component<IFriendsProps, {properties?
   private renderFriends(friends){
     return(
       friends.map(friend=>{
-          let ref = "/sites/UserProfile/SitePages/User.aspx?name="+friend.Name;
         return(
-          <a href={ref} ><div className={styles.friend} title={friend.Name}>
+          <div className={styles.friend} title={friend.Name} onClick = {()=> location.replace(`/sites/UserProfile/SitePages/User.aspx?name=${friend.Name}`)}>
           <img className={styles.imagePreview} src={friend.Picture}></img>
           <a>{friend.Name}</a>
-          </div></a>
+          </div>
         );
       })
     );
