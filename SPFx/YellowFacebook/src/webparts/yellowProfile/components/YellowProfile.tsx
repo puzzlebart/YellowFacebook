@@ -24,7 +24,6 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
 
   public async componentDidMount() {
     await this.fetchData();
-    console.log(this.state.properties);
   }
 
   public render(): React.ReactElement<IYellowProfileProps> {
@@ -53,7 +52,6 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
     }
 
     dates.sort((a, b) => b.getDate() < a.getDate() ? -1 : 1);
-    console.log(dates);
 
     return quotes.map((q, i) => {
 
@@ -74,7 +72,6 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
       `https://puzzlebart-saas.herokuapp.com/characters?Name=${name}`,
       HttpClient.configurations.v1, { headers: { apikey: 'EATMYSHORTS' } });
     let chars = await res.json();
-    console.log(chars[0]);
     let images = [];
     for (let i = 0; i < 10; i++) {
       if (chars[0].Photos && chars[0].Photos[i] != null) {
@@ -84,8 +81,8 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
     let data = await sp.web.lists.getByTitle('Properties').items.getAll();
     let properties = {
       name: chars[0].Name,
-      gender: data[0].Gender,
-      occupation: data[0].Occupation,
+      gender: chars[0].Gender,
+      occupation: chars[0].Occupation,
       quotes: chars[0].Quotes,
       profilePic: chars[0].Picture,
       friends: JSON.parse(data[0].Friends),
@@ -102,7 +99,6 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
     const regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
     const results = regex.exec(location.search);
-    console.log(results);
     return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
   }
 
