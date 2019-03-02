@@ -99,7 +99,7 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
   }
 
   private openProfile(user: string) {
-    location.replace(`/sites//sites/UserProfile/SitePages/User.aspx?name=${user}`);
+    location.replace(`/sites/UserProfile/SitePages/User.aspx?name=${user}`);
   }
 
   private async fetchData() {
