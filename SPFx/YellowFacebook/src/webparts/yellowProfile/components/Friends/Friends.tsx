@@ -8,26 +8,36 @@ export default class Friends extends React.Component<IFriendsProps, {}> {
   }
 
   public render() {
-    console.log(this.props.friends);
     return (
       <div className={styles.leftComponent}>
-      <h3>Friends</h3>
-      <div className={styles.friends}>
-        {this.renderFriends()}
-      </div>
-
+        <h3>Friends</h3>
+        <div className={styles.friends}>
+          {/* {this.renderFriends()} */}
+        </div>
       </div>
     );
   }
 
-  private renderFriends() {
-    return this.props.friends.map(friend => {
-      return  <a href="?name=Lisa Simpson"><div className={styles.friend}>
-        <img className={styles.imagePreview} src={"https://vignette.wikia.nocookie.net/simpsons/images/5/57/Lisa_Simpson2.png/revision/latest?cb=20180319000458"}></img>
-        <a >Lisa Simpson</a>
-        </div></a>;
-    });
+  //Does not work yet
+  public renderFriends() {
+    console.log("ÆÆÆÆÆÆÆ")
+    return fetch("https://puzzlebart-saas.herokuapp.com/quotes?amount=9", { headers: { apikey: "EATMYSHORTS" } }).then(d => d.json().then(friends => {
+      console.log(friends);
+      let mappedFriends = friends.map(quote => {
+        return {
+          author: quote.Name,
+          picture: quote.Picture
+        };
+      });
+      console.log(mappedFriends);
+      return mappedFriends.map(friend => {
+        let ref = "?name=" + friend.author;
+        console.log(ref);
+        return (<a href={ref}><div className={styles.friend}>
+          <img className={styles.imagePreview} src={friend.picture}></img>
+          <a>{friend.author}</a>
+        </div></a>);
+      })
+    }));
   }
-
-
 }

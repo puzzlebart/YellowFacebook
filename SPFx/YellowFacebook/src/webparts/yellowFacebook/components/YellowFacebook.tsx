@@ -94,11 +94,10 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
     let randomQuotes=JSON.parse(await fetch("https://puzzlebart-saas.herokuapp.com/quotes?amount=50",{headers:{apikey:"EATMYSHORTS"}}).then(d=>d.text().then(r=>r)));
     let data = await sp.web.lists.getByTitle('Adds').items.getAll();
     let quotes = randomQuotes.map(quote=> {
-      let qu = (quote);
       return{
-      quote: qu.Quote,
-      author: qu.Name,
-      picture: qu.Picture
+      quote: quote.Quote,
+      author: quote.Name,
+      picture: quote.Picture
       };
     });
     let adds =  data.map(dat =>{
@@ -114,7 +113,7 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
     this.setState({ adds:adds, quotes:quotes, isLoading: false });
   }
   private randomNumber(max){
-    return Math.floor(Math.random() * max) + 1
+    return Math.floor(Math.random() * max) + 1;
   }
 
   private randomDate(start, end) {
