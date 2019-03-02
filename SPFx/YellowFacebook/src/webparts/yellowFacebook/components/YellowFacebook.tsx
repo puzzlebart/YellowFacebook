@@ -26,28 +26,20 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
   public async componentDidMount() {
     await this.fetchData();
   }
-
-  public randomize(a, b) { return Math.random() - 0.5;}
-
   public render(): React.ReactElement<IYellowFacebookProps> {
     if (this.state.isLoading) {
       return null;
     } else {
       let adds = this.renderAdds(this.state.adds);
       let quotes =this.renderQuote(this.state.quotes);
-      let feed = quotes.concat(adds);
-      feed.sort(this.randomize);
-      console.log("1");
-      console.log(quotes);
-      console.log("2");
-      console.log(feed);
+      adds.forEach(element => {
+        quotes.splice(this.randomNumber(quotes.length), 0, element);
+      });
       return (
         <div className={ styles.yellowFacebook }>
 
         <div className={styles.feed}>
-            {/* {this.shuffle(this.renderQuote(this.state.quotes))} */}
-            {feed}
-
+            {quotes}
           </div>
         </div>
       );
@@ -100,15 +92,7 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
 
   private async fetchData() {
     let randomQuotes=JSON.parse(await fetch("https://puzzlebart-saas.herokuapp.com/quotes?amount=50",{headers:{apikey:"EATMYSHORTS"}}).then(d=>d.text().then(r=>r)));
-    console.log("##################");
-    console.log(randomQuotes);
-    console.log("##################");
-    let data2 = await fetch("https://puzzlebart-saas.herokuapp.com/characters?Name=Bart%20Simpson",{headers:{apikey:"EATMYSHORTS"}}).then(d=>d.text().then(r=>r));
     let data = await sp.web.lists.getByTitle('Adds').items.getAll();
-    console.log(JSON.parse(data2)[0]);
-    console.log(JSON.parse(data2)[0].Name);
-    console.log(JSON.parse(data2)[0].Photos);
-    console.log(JSON.parse(data2)[0].Quotes);
     let quotes = randomQuotes.map(quote=> {
       let qu = (quote);
       return{
@@ -117,15 +101,6 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
       picture: qu.Picture
       };
     });
-    let picture = JSON.parse(data2)[0].Picture;
-    let author = JSON.parse(data2)[0].Name;
-    // let quotes = (JSON.parse(data2)[0].Quotes).map(quote =>{
-    //   return{
-    //     quote: quote,
-    //     author: author,
-    //     picture: picture
-    //   }
-    // })
     let adds =  data.map(dat =>{
       return {
       title: dat.Title,
@@ -137,6 +112,9 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
       };
     });
     this.setState({ adds:adds, quotes:quotes, isLoading: false });
+  }
+  private randomNumber(max){
+    return Math.floor(Math.random() * max) + 1
   }
 
   private randomDate(start, end) {
