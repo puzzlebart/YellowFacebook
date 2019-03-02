@@ -29,7 +29,7 @@ export default class TopBar extends React.Component<ITopBarProps, ITopBarState> 
 
         <div
           className={styles.userProfileLink}
-          onClick={() => location.replace('/sites/HomerSimpson')}>
+          onClick={() => location.replace('/sites/UserProfile/SitePages/User.aspx')}>
           <Persona
             {...persona}
             size={PersonaSize.size28}
@@ -44,7 +44,7 @@ export default class TopBar extends React.Component<ITopBarProps, ITopBarState> 
   }
 
   private _onSearch = () => {
-    location.replace(`/sites/HomerSimpson?name=${this.state.searchTerm}`);
+    location.replace(`/sites/UserProfile/SitePages/User.aspx?name=${this.state.searchTerm}`);
   }
 
 }
