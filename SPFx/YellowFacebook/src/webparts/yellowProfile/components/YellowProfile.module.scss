@@ -35,17 +35,11 @@
                     width: 89px;
                     height: 89px;
                     margin: 1px;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
                     text-align: center;
-                    .imagePreview {
-                        margin: 1px;
-                        height: 89px;
-                        width: 89px;
-                        object-fit: cover;
-                    }
                     a {
                         display: block;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
                         white-space: nowrap;
                         background-image: linear-gradient(#11111104, #111111c2);
                         text-decoration: none;
