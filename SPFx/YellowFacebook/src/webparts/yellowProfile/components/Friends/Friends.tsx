@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styles from '../YellowProfile.module.scss';
 import IFriendsProps from './IFriendsProps';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 export default class Friends extends React.Component<IFriendsProps, {properties?, isLoading:boolean}> {
   constructor(props) {
@@ -20,7 +21,7 @@ export default class Friends extends React.Component<IFriendsProps, {properties?
       let numFriends = Math.floor(Math.random() * 500) + 17
       return (
         <div className={styles.leftComponent}>
-          <h3>Friends ({numFriends})</h3>
+          <h3><Icon iconName="People" className={styles.headerIcon}/>Friends ({numFriends})</h3>
           <div className={styles.friends}>
             {this.renderFriends(this.state.properties)}
           </div>
