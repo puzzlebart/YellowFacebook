@@ -18,8 +18,7 @@ export default class Friends extends React.Component<IFriendsProps, {properties?
     if (this.state.isLoading) {
       return null;
     } else{
-      let props = this.props.friends;
-      let id = props.id;
+      let id = this.props.friends.id;
       return (
         <div className={styles.leftComponent}>
           <h3><Icon iconName="People" className={styles.headerIcon}/>Friends ({id})</h3>
