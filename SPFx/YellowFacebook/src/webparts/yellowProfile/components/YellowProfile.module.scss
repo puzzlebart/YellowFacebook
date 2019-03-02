@@ -32,6 +32,7 @@
             }
             .friends {
                 display: flex;
+                flex-wrap: wrap;
                 .friend {
                     width: 89px;
                     height: 89px;
