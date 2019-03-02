@@ -32,7 +32,9 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
       return null;
     } else return (
       <div className={styles.yellowProfile}>
+      <div className={styles.headerContainer}>
         <ProfileHeader userName={this.state.properties.name} profilePic={this.state.properties.profilePic} />
+        </div>
         <div className={styles.leftComponentsContainer}>
           <Presentation properties={this.state.properties} />
           <Images properties={this.state.properties} />

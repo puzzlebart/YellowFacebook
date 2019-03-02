@@ -4,9 +4,13 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    .headerContainer {
+      position: absolute;
+    }
     .leftComponentsContainer {
         width: 300px;
         height: auto;
+        margin-top: 230px;
         .leftComponent {
             background-color: #ffffff;
             margin: 5px 0;
@@ -63,6 +67,7 @@
         display: block;
         width: 480px;
         padding: 5px;
+        margin-top: 230px;
         .statusUpdateHeader {
             display: block;
             margin-bottom: 15px;
