@@ -23,13 +23,7 @@
             }
             .headerIcon {
                 margin-right: 5px;
-                font-size: 20px; 
-            }
-            .imagePreview {
-                margin: 1px;
-                height: 89px;
-                width: 89px;
-                object-fit: cover;
+                font-size: 20px;
             }
             a {
                 text-decoration: none;
@@ -41,9 +35,15 @@
                     width: 89px;
                     height: 89px;
                     margin: 1px;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        text-align: center;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    text-align: center;
+                    .imagePreview {
+                        margin: 1px;
+                        height: 89px;
+                        width: 89px;
+                        object-fit: cover;
+                    }
                     a {
                         display: block;
                         white-space: nowrap;
