@@ -35,7 +35,7 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
         <div className={styles.leftComponentsContainer}>
           <Presentation properties={this.state.properties} />
           <Images properties={this.state.properties} />
-          <Friends friends={this.state.properties.friends} />
+          <Friends friends={this.state.properties} />
         </div>
         <div className={styles.feed}>
           {this.renderItems(this.state.properties.quotes)}
@@ -86,6 +86,7 @@ export default class YellowProfile extends React.Component<IYellowProfileProps, 
       quotes: chars[0].Quotes,
       profilePic: chars[0].Picture,
       friends: JSON.parse(data[0].Friends),
+      id: chars[0].Id,
       images: images
     };
     this.setState({ properties, isLoading: false });

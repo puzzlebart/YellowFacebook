@@ -1,3 +1,3 @@
 export default interface IFriendsProps {
-  friends: string[];
+  friends: any;
 }
