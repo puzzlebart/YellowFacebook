@@ -31,14 +31,14 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
       return null;
     } else {
       let adds = this.renderAdds(this.state.adds);
-      let quotes =this.renderQuote(this.state.quotes);
+      let quotes = this.renderQuote(this.state.quotes);
       adds.forEach(element => {
         quotes.splice(this.randomNumber(quotes.length), 0, element);
       });
       return (
-        <div className={ styles.yellowFacebook }>
+        <div className={styles.yellowFacebook}>
 
-        <div className={styles.feed}>
+          <div className={styles.feed}>
             {quotes}
           </div>
         </div>
@@ -59,7 +59,7 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
         ]
       };
       return (
-        <DocumentCard className={styles.statusUpdateHeader} >
+        <DocumentCard className={styles.statusUpdateHeader}>
           <DocumentCardActivity
             activity='Advertisement'
             people={[{ name: q.company, profileImageSrc: q.companylogo }]} />
@@ -79,40 +79,47 @@ export default class YellowFacebook extends React.Component<IYellowFacebookProps
     }
     dates.sort((a, b) => b.getDate() < a.getDate() ? -1 : 1);
 
-      return quotes.map((quote, i) => {
-        return(<DocumentCard className={styles.statusUpdateHeader}>
-          <DocumentCardActivity
-            activity={dates[i].toDateString()}
-            people={[{ name: quote.author, profileImageSrc: quote.picture }]} />
+    return quotes.map((quote, i) => {
+      return (
+        <DocumentCard className={styles.statusUpdateHeader}>
+          <div className={styles.userProfileLink} onClick={() => this.openProfile(quote.author)}>
+            <DocumentCardActivity
+              activity={dates[i].toDateString()}
+              people={[{ name: quote.author, profileImageSrc: quote.picture }]} />
+          </div>
           <DocumentCardTitle title={quote.quote} />
         </DocumentCard>
       );
     });
   }
 
-  private async fetchData() {
-    let randomQuotes=JSON.parse(await fetch("https://puzzlebart-saas.herokuapp.com/quotes?amount=50",{headers:{apikey:"EATMYSHORTS"}}).then(d=>d.text().then(r=>r)));
-    let data = await sp.web.lists.getByTitle('Adds').items.getAll();
-    let quotes = randomQuotes.map(quote=> {
-      return{
-      quote: quote.Quote,
-      author: quote.Name,
-      picture: quote.Picture
-      };
-    });
-    let adds =  data.map(dat =>{
-      return {
-      title: dat.Title,
-      description: dat.Description,
-      picture: dat.Picture,
-      demography: dat.Demography,
-      companylogo: dat.CompanyLogo,
-      company: dat.Company
-      };
-    });
-    this.setState({ adds:adds, quotes:quotes, isLoading: false });
+  private openProfile(user: string) {
+    location.replace(`/sites/HomerSimpson?name=${user}`);
   }
-  private randomNumber(max){
+
+  private async fetchData() {
+    let randomQuotes = JSON.parse(await fetch("https://puzzlebart-saas.herokuapp.com/quotes?amount=50", { headers: { apikey: "EATMYSHORTS" } }).then(d => d.text().then(r => r)));
+    let data = await sp.web.lists.getByTitle('Adds').items.getAll();
+    let quotes = randomQuotes.map(quote => {
+      return {
+        quote: quote.Quote,
+        author: quote.Name,
+        picture: quote.Picture
+      };
+    });
+    let adds = data.map(dat => {
+      return {
+        title: dat.Title,
+        description: dat.Description,
+        picture: dat.Picture,
+        demography: dat.Demography,
+        companylogo: dat.CompanyLogo,
+        company: dat.Company
+      };
+    });
+    this.setState({ adds: adds, quotes: quotes, isLoading: false });
+  }
+  private randomNumber(max) {
     return Math.floor(Math.random() * max) + 1;
   }
 
