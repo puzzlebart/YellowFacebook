@@ -37,11 +37,17 @@
                     width: 89px;
                     height: 89px;
                     margin: 1px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        text-align: center;
                     a {
+                        display: block;
+                        white-space: nowrap;
                         background-image: linear-gradient(#11111104, #111111c2);
                         text-decoration: none;
                         position: relative;
-                        top: -20px;
+                        padding: 0 5px 0 5px;
+                        top: -25px;
                         color: #fff;
                         font-weight: 100;
                     }

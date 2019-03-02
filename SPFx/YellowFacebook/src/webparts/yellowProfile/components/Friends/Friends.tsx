@@ -32,7 +32,7 @@ export default class Friends extends React.Component<IFriendsProps, {properties?
     return(
       friends.map(friend=>{
         return(
-          <a href={friend.Name}><div className={styles.friend}>
+          <a href={friend.Name} ><div className={styles.friend} title={friend.Name}>
           <img className={styles.imagePreview} src={friend.Picture}></img>
           <a>{friend.Name}</a>
           </div></a>
